@@ -1,5 +1,5 @@
 import axios from 'axios'
-//import {Characters, Comics} from '../models'
+import {Character} from '../../models/Characters.js'
 
 export const getApiCharacters = async (req, res) => {
   try {
@@ -15,11 +15,34 @@ export const getApiCharacters = async (req, res) => {
         comics: character.comics.items.map(comic => comic.name)
       }
     })
+
+    information.forEach(char => {
+       Character.findOrCreate({
+          where: {
+            id: char.id,
+            name: char.name,
+            description: char.description,
+            image: char.image,      
+          }
+       })
+    })
+
+    const allApiCharacters = await Character.findAll()
  
-    res.status(200).send(information)
+    res.status(200).send(allApiCharacters)
 
   } catch (error) {
     console.log(error)
     res.send(error)
+  }
+}
+
+export const getDbCharacters = async () => {
+  try {
+    await Character.findAll({
+      attributes: ['id', 'name', 'description', 'image'],
+    })
+  } catch (error) {
+    console.log(error)
   }
 }
