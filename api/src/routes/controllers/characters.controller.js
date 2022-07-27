@@ -15,21 +15,8 @@ export const getApiCharacters = async (req, res) => {
         comics: character.comics.items.map(comic => comic.name)
       }
     })
-
-    information.forEach(char => {
-       Character.findOrCreate({
-          where: {
-            id: char.id,
-            name: char.name,
-            description: char.description,
-            image: char.image,      
-          }
-       })
-    })
-
-    const allApiCharacters = await Character.findAll()
  
-    res.status(200).send(allApiCharacters)
+    res.status(200).send(information)
 
   } catch (error) {
     console.log(error)
@@ -40,7 +27,13 @@ export const getApiCharacters = async (req, res) => {
 export const getDbCharacters = async () => {
   try {
     await Character.findAll({
-      attributes: ['id', 'name', 'description', 'image'],
+      include: { 
+        model: Comic,
+        attributes: ['name'],
+        through: {
+          attributes: []
+        }
+       }
     })
   } catch (error) {
     console.log(error)

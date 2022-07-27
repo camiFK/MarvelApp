@@ -1,10 +1,11 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes, UUID} from 'sequelize';
 import {sequelize} from '../database/database.js';
 import {Comic} from './Comics.js'
 
 export const Character = sequelize.define('character', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
     },
@@ -20,6 +21,11 @@ export const Character = sequelize.define('character', {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "https://media.revistavanityfair.es/photos/60e82e4efc86fee32f97bf69/master/w_1600%2Cc_limit/239224.jpg" ,
+    },
+    createdDB: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
     }
 })
 

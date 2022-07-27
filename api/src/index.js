@@ -4,7 +4,7 @@ import {sequelize} from './database/database.js'
 
 async function server() {
     try {
-        await sequelize.sync({force: false}) // Syncronizes the database with the models
+        await sequelize.sync({force: true}) // Syncronizes the database with the models
         app.listen(3000)
         console.log('Server running on port 3000')
       } catch (error) {
