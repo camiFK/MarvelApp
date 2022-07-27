@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from "morgan";
+import charactersRoutes from './routes/characters.routes.js';
 
 const app = express();
 
