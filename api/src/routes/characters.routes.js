@@ -1,8 +1,8 @@
 import {Router} from 'express'
-import {getApiCharacters} from './controllers/characters.controller.js'
+import {getAllCharacters} from './controllers/characters.controller.js'
 const router = Router()
 
-router.get('/characters', getApiCharacters);
+router.get('/characters', getAllCharacters);
 router.post('/characters');
 router.put('/characters/:id');
 router.delete('/characters/:id');

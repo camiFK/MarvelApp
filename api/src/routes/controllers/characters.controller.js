@@ -1,7 +1,8 @@
 import axios from 'axios'
 import {Character} from '../../models/Characters.js'
+import { Comic } from '../../models/Comics.js'
 
-export const getApiCharacters = async (req, res) => {
+export const getApiCharacters = async () => {
   try {
 
     const response = await axios.get('https://gateway.marvel.com/v1/public/characters?ts=1&apikey=7d4a743cdb10f022dbc5f5f4cb22040c&hash=8dec0b1007c4c461bdec676eb458aeeb&limit=60')
@@ -16,7 +17,7 @@ export const getApiCharacters = async (req, res) => {
       }
     })
  
-    res.status(200).send(information)
+    return information
 
   } catch (error) {
     console.log(error)
@@ -26,7 +27,8 @@ export const getApiCharacters = async (req, res) => {
 
 export const getDbCharacters = async () => {
   try {
-    await Character.findAll({
+
+   return await Character.findAll({
       include: { 
         model: Comic,
         attributes: ['name'],
@@ -35,6 +37,20 @@ export const getDbCharacters = async () => {
         }
        }
     })
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getAllCharacters = async (req, res) => {
+  try {
+    const api = await getApiCharacters()
+    const db = await getDbCharacters()
+    const all = api.concat(db)
+
+    res.status(200).send(all);
+    
   } catch (error) {
     console.log(error)
   }
