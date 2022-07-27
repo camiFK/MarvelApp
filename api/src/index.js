@@ -1,8 +1,6 @@
 import app from './app.js'
 import {sequelize} from './database/database.js'
 
-import './models/Characters.js'
-import './models/Comics.js'
 
 async function server() {
     try {

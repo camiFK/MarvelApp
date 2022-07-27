@@ -4,6 +4,7 @@ import charactersRoutes from './routes/characters.routes.js';
 
 const app = express();
 
+app.use(charactersRoutes)
 app.use(morgan("dev"));
 app.use(express.json());
 
