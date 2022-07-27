@@ -1,7 +1,7 @@
 import {DataTypes} from 'sequelize';
-import {sequelize} from '../database/database.js'
+import {sequelize} from '../database/database.js';
 
-export default Character = sequelize.define('characters', {
+export const Character = sequelize.define('character', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -18,5 +18,6 @@ export default Character = sequelize.define('characters', {
     image: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "https://media.revistavanityfair.es/photos/60e82e4efc86fee32f97bf69/master/w_1600%2Cc_limit/239224.jpg" ,
     }
 })
