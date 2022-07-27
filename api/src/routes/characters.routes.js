@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import {getApiCharacters} from '../controllers/characters.controller.js'
+import {getApiCharacters} from './controllers/characters.controller.js'
 const router = Router()
 
 router.get('/characters', getApiCharacters);
