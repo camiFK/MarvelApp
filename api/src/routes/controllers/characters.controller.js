@@ -21,7 +21,6 @@ export const getApiCharacters = async () => {
       }
     })
  
-    console.log(information)
     return information;
 
   } catch (error) {
@@ -85,6 +84,23 @@ export const postCharacter = async (req, res) => {
 }
 
 export const updateCharacter = async (req, res) => {
+  try {
+    const {id} = req.params
+    const {name, description, image, comics} = req.body
+
+    const updated = await Character.findByPk(id)
+
+    name ? updated.name = name : null;
+    description ? updated.description = description : null;
+    image ? updated.image = image : null;
+    comics ? updated.comics = comics : null;
+    
+    await updated.save()
+
+    res.json({updated})
+  } catch (error) {
+    return res.status(500).json({message: error.message})
+  }
 
 }
 
