@@ -4,7 +4,7 @@ import { reducers } from './reducers/indexReducer.js';
 import thunk from 'redux-thunk';
 
 const store = configureStore(
-   reducers,
+   {reducer: reducers},
    composeWithDevTools(applyMiddleware(thunk))
 )
 
