@@ -13,7 +13,11 @@ export const getApiCharacters = async () => {
         name: character.name,
         description: character.description,
         image: character.thumbnail.path + '.' + character.thumbnail.extension,
-        comics: character.comics.items.map(comic => comic.name)
+        comics: character.comics.items.map(comic => {
+          return {
+           name: comic.name
+          }
+        })
       }
     })
  
