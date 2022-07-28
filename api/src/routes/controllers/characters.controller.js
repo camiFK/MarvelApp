@@ -17,11 +17,11 @@ export const getApiCharacters = async () => {
       }
     })
  
-    return information
+    console.log(information)
+    return information;
 
   } catch (error) {
     console.log(error)
-    res.send(error)
   }
 }
 
@@ -47,10 +47,34 @@ export const getAllCharacters = async (req, res) => {
   try {
     const api = await getApiCharacters()
     const db = await getDbCharacters()
-    const all = api.concat(db)
+    const all = db.concat(api)
 
     res.status(200).send(all);
     
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const postCharacter = async (req, res) => {
+  try {
+    let {name, description, image, comics} = req.body
+    console.log(req.body)
+
+    let newCharacter = await Character.create({
+      name,
+      description,
+      image,
+    })
+
+     let comicSelected = await Comic.findAll({
+       where: {name: comics}
+     })
+
+    await newCharacter.addComic(comicSelected)
+
+    res.status(200).send('Character created')
+
   } catch (error) {
     console.log(error)
   }
