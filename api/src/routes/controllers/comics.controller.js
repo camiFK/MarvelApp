@@ -7,7 +7,7 @@ export const getComics = async (req, res) => {
         
         const apiComics = response.data.data.results.map(comic => comic.title)
 
-        apiComics.forEach(comic => {
+        await apiComics.forEach(comic => {
            Comic.findOrCreate({
              where: {
                 name: comic,   
