@@ -1,9 +1,9 @@
 import {Router} from 'express'
-import {getAllCharacters} from './controllers/characters.controller.js'
+import {getAllCharacters, postCharacter} from './controllers/characters.controller.js'
 const router = Router()
 
 router.get('/characters', getAllCharacters);
-router.post('/characters');
+router.post('/characters', postCharacter);
 router.put('/characters/:id');
 router.delete('/characters/:id');
 router.get('/characters/:id');
