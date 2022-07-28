@@ -83,3 +83,26 @@ export const postCharacter = async (req, res) => {
     console.log(error)
   }
 }
+
+export const updateCharacter = async (req, res) => {
+
+}
+
+export const deleteCharacter = async (req, res) => {
+  try {
+
+    const {id} = req.params
+    
+    await Character.destroy({
+      where: {
+        id,
+      }
+    })
+
+    res.sendStatus(204)
+    
+  } catch (error) {
+    return res.status(500).json({message: error.message})
+  }
+
+}
