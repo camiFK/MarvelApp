@@ -122,3 +122,39 @@ export const deleteCharacter = async (req, res) => {
   }
 
 }
+
+export const getCharacter = async (req, res) => {
+  try {
+    const {id} = req.params
+
+    if (id.includes('-')) {
+      const character = await Character.findOne({
+        where: {
+          id,
+        }
+      })
+      res.json(character)
+    }
+    else {
+      const response = await axios.get(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=7d4a743cdb10f022dbc5f5f4cb22040c&hash=8dec0b1007c4c461bdec676eb458aeeb`)
+      
+      const apiChar = response.data.data.results.map(el => {
+        return {
+          id: el.id,
+          name: el.name,
+          description: el.description,
+          image: el.thumbnail.path + '.' + el.thumbnail.extension,
+          comics: el.comics.items.map(comic => {
+            return {
+             name: comic.name
+            }
+          })
+        }
+      })
+      
+      res.status(200).json(apiChar)
+    }
+  } catch (error) {
+    return res.status(500).json({message: error.message})
+  }
+}
