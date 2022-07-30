@@ -1,9 +1,20 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import Styles from './Landing.module.scss'
 
 const Landing = () => {
+
+  const navigate = useNavigate()
+
   return (
-    <div>
-        <h1>In process</h1>
+    <div className={Styles.ctn}>
+
+    <button 
+    className={Styles.btn}
+    onClick={() => navigate('/home')}>
+
+    </button>
+    
     </div>
   )
 }
