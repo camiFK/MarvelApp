@@ -1,14 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
-import axios from 'axios';
-
-async function getAllCharacters(){
-   const {data} = await axios.get('http://localhost:3000/characters');
-   console.log(data)
-   return data;
-}
+import { getAllCharacters, getCharacterDetail } from '../actions.js';
 
 const initialState = {
-         characters: getAllCharacters(),
+         characters: [],
          charactersCopy: [],
          characterDetail: [],
          characterFiltered: [],
@@ -18,11 +12,18 @@ const initialState = {
 export const characterSlice = createSlice({
     name: 'character',
     initialState,
-    reducers: {
-
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(getAllCharacters.fulfilled, (state, action) => {
+            state.characters.push(action.payload);
+            state.charactersCopy.push(action.payload);
+        })
+        builder.addCase(getCharacterDetail.fulfilled, (state, action) => {
+            state.characterDetail.push(action.payload);
+        })
     }
 })
 
-console.log(characterSlice)
+
 
 export default characterSlice.reducer;
