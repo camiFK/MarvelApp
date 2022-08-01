@@ -1,7 +1,6 @@
 import app from './app.js'
 import {sequelize} from './database/database.js'
 
-
 async function server() {
     try {
         await sequelize.sync({force: true}) // Syncronizes the database with the models
