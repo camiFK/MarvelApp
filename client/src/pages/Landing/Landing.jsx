@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { useDispatch } from 'react-redux'
 import {getAllCharacters, getAllComics, getCharacterDetail} from '../../redux/actions.js'
+import Styles from './Landing.module.scss'
 
 const Landing = () => {
 
@@ -15,7 +16,9 @@ const Landing = () => {
   }, [dispatch]);
 
   return (
-    <div>In process</div>
+    <div className={Styles.container}>
+
+    </div>
   )
 }
 
