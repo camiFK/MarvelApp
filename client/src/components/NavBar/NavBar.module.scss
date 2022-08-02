@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+.nav {
+    color: whitesmoke;
+    width: 100%;
+    position: fixed;
+    background-color: rgb(255, 0, 0);
+    top: 0;
+    z-index: 10;
+}
+
+.container {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    color: whitesmoke;
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+}
+.title a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.title2 {
+    margin: 10px;
+}
+
+.pages a {
+    margin: 10px;
+    color: whitesmoke;
+    font-family: 'Roboto Slab', serif;
+    text-decoration: none;
+}
