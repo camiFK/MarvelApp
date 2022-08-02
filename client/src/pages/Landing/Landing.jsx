@@ -17,7 +17,7 @@ const Landing = () => {
 
   return (
     <div className={Styles.container}>
-
+        <h1 className={Styles.title}>Marvel App</h1>
     </div>
   )
 }
