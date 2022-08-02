@@ -1,7 +1,7 @@
 import './App.css';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import Landing from './pages/Landing/Landing.jsx'
-import Home from './pages/Home/Home';
+import Home from './pages/Home/Home.jsx';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
       <NavBar />
 
       <Routes>
-      <Route exact path="/" element={<Landing/>}/>
-      <Route exact path='/home' element={<Home/>} />
+      <Route path="/" element={<Landing/>}/>
+      <Route path="/home" element={<Home/>} />
       
       </Routes>
     </BrowserRouter>
