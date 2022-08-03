@@ -3,7 +3,6 @@ import Styles from './Landing.module.scss'
 
 const Landing = () => {
   
-
   return (
     <div className={Styles.container}>
 
