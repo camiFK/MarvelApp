@@ -1,18 +1,17 @@
 import React from 'react'
 import Styles from './NavBar.module.scss'
 import {NavLink} from 'react-router-dom'
-
+import logo from '../../assets/logo.png'
 
 const NavBar = () => {
   return (
     <nav className={Styles.nav}>
       <div className={Styles.container}>
         
-        <div className={Styles.title}>
           <NavLink to='/'>
-          <p className={Styles.title2}>Marvel App</p>
+           <img src={logo} height='40px' width='100px' alt='logo' />
           </NavLink>
-        </div>
+
 
         <div className={Styles.pages}>
 
@@ -21,10 +20,6 @@ const NavBar = () => {
           <NavLink to='/about'>About</NavLink>
    
         </div>
-
-
-
-
       </div>
     </nav>
   )
