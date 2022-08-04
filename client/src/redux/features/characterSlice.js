@@ -2,6 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import { getAllCharacters, getCharacterDetail } from '../actions.js';
 
 const initialState = {
+         loading: false,
          characters: [],
          charactersCopy: [],
          characterDetail: [],
@@ -14,9 +15,14 @@ export const characterSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
+        builder.addCase(getAllCharacters.pending, (state) => {
+            state.loading = true;
+        })
+
         builder.addCase(getAllCharacters.fulfilled, (state, action) => {
-            state.characters.push(action.payload);
-            state.charactersCopy.push(action.payload);
+            state.loading = false;
+            state.characters = action.payload;
+            state.charactersCopy = action.payload;
         })
         builder.addCase(getCharacterDetail.fulfilled, (state, action) => {
             state.characterDetail.push(action.payload);
