@@ -1,9 +1,33 @@
 .container {
     width: 100%;
     min-height: 100vh;
-    // background: linear-gradient( #0020c2, rgb(0, 0, 0));
+    //background: linear-gradient( #0000c2, rgb(0, 0, 0));
 }
 
-.paginate {
-    margin-top: 200px;
+.paginationContainer {
+    list-style: none;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: wrap;
+    
+    a{
+        display: inline-block;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid rgb(255, 255, 255);
+        background-color: rgb(142, 22, 22);
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+
+    ul {
+        margin-bottom: 0px;
+    }
+
+}
+
+.paginationActive {
+    background-color: #000000;
+    color: white;
 }
