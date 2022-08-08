@@ -31,3 +31,11 @@
     background-color: #000000;
     color: white;
 }
+
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}

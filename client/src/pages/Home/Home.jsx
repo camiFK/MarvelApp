@@ -22,7 +22,6 @@ const Home = () => {
   const [title, setTitle] = useState("");
 
   function renderData(data) {
-
     const dataToRender = data.slice(pageVisited, pageVisited + cardsPerPage); // slice data to render by page visited and cards per page
 
     const pageCount = Math.ceil(data.length / cardsPerPage); // 5
@@ -33,26 +32,26 @@ const Home = () => {
 
     return (
       <div>
+        <div className={Styles.cardsContainer}>
         {dataToRender.map((character) => {
           return <Card key={character.id} character={character} />;
         })}
+        </div>
 
-
-          <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            breakLabel={"..."}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={Styles.paginationContainer}
-            pageClassName={"page-item"}
-            pageLinkClassName={"page-link"}
-            previousLinkClassName={"page-link"}
-            nextLinkClassName={"page-link"}
-            disabledClassName={"paginationDisabled"}
-            activeClassName={Styles.paginationActive}
-          />
-
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          breakLabel={"..."}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={Styles.paginationContainer}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousLinkClassName={"page-link"}
+          nextLinkClassName={"page-link"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={Styles.paginationActive}
+        />
       </div>
     );
   }
