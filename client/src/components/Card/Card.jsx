@@ -1,14 +1,13 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import { StyledCards } from './StyledCards';
+import Styles from './Card.module.scss';
 
 const Card = ({character}) => {
-  console.log(character);
-  console.log('hola')
   return (
     <StyledCards>
-        <p>{character.name}</p>
-        <img src={character.image} alt="Img not found" height="350px" width="400px" />
+        <p className={Styles.title}>{character.name}</p>
+        <img src={character.image} alt="Img not found" className={Styles.img} />
     </StyledCards>
   )
 }
