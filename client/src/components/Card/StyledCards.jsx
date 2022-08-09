@@ -8,7 +8,7 @@ export const StyledCards = styled(motion.div)`
     overflow: hidden;
     width: 350px;
     height: 400px;
-    background-color: #be1111;
+    background-color: rgb(178, 0, 0);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: transform 250ms ease;
