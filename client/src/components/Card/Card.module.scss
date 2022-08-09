@@ -11,5 +11,20 @@
     font-family: 'Roboto Mono', monospace;
     color: #fff;
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 10px;
 }
+
+.container {
+    margin: 40px;
+    border-radius: 10px;
+    width: 350px;
+    height: 400px;
+    background-color: rgb(178, 0, 0);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 250ms ease;
+    &:hover{
+        transform: scale(1.05);
+     }
+}
+
