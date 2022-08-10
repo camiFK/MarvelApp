@@ -1,33 +1,44 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
-import Styles from "./Detail.module.scss";
+import { StyledBackdrop, StyledMotionCard, StyledButton } from "./StyledMotion";
+import { FontAwesomeIcon } from "@fortawesome/free-regular-svg-icons";
 
 const Detail = ({ character, setShowCard }) => {
-
   const variants = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
   };
 
   return (
-    <motion.div
-      onClick={(ev) => { ev.stopPropagation(); }}
-      layout="position"
-      whileInView={{ opacity: 1 }}
-      variants={variants}
-      initial={"hidden"}
-      animate={"visible"}
-      exit={"hidden"}
-      className={Styles.backdropDetailedCard}
-    >
-      <div className={Styles.details}>
-        <p>{character.id}</p>
-        <ul>{character.comics.map((el) => <li>{el.name}</li>)}</ul>
+    <AnimatePresence>
+      <StyledBackdrop
+        onClick={(ev) => {
+          ev.stopPropagation();
+        }}
+        layout="position"
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        variants={variants}
+        initial={variants.hidden}
+        animate={variants.visible}
+        exit={variants.hidden}
+      >
+        <StyledMotionCard>
+          <h3>{character.name.toUpperCase()}</h3>
+          <p>ID: {character.id}</p>
+          <p className='subdetails'>{character.description}</p>
+          <h5>Comics</h5>
+          <ul>
+            {character.comics.map((el) => (
+              <li>{el.name}</li>
+            ))}
+          </ul>
 
-      <motion.button onClick={() => setShowCard(false)}>X</motion.button>
-      </div>
-    </motion.div>
+          <StyledButton onClick={() => setShowCard(false)}>X</StyledButton>
+        </StyledMotionCard>
+      </StyledBackdrop>
+    </AnimatePresence>
   );
 };
 
