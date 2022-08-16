@@ -2,9 +2,9 @@
 <img width='450' src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/1200px-Marvel_Logo.svg.png'>
 </p>
 
-### Description
+## Description
 This project was created for educational purposes.
-- Backend: REST-CRUD API consuming marvel API and PostgreSQL database.
+- Backend: REST- CRUD API consuming marvel API and PostgreSQL database.
 - Frontend: React App, using Redux Toolkit and Framer Motion.
 
 ## Technologies
@@ -17,3 +17,5 @@ This project was created for educational purposes.
 - [ ] Express
 - [ ] Sequelize
 - [ ] PostgreSQL
+
+## To be continued...
